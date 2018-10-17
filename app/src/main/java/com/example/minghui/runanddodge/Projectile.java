@@ -54,7 +54,7 @@ public class Projectile implements GameObject {
 
     @Override
     public void draw(Canvas canvas) {
-        if (rect == null || startingLoc == null) return;
+        if (rect == null || startingLoc == null || alreadyCollided) return;
 
         Paint paint = new Paint();
         paint.setColor(color);

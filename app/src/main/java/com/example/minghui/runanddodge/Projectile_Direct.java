@@ -13,7 +13,7 @@ import android.graphics.RectF;
 
 public class Projectile_Direct extends Projectile {
     // randomly start from either left or right side
-    // fixed speed
+    // speed varies
     // moves directly toward the target player
 
 
@@ -22,7 +22,7 @@ public class Projectile_Direct extends Projectile {
 
         this.startingLoc = generateStartingLocation();
         this.rect = new RectF(startingLoc.x, startingLoc.y, startingLoc.x + 20, startingLoc.y + 20);
-        this.speed = 10;
+        this.speed = generateRandomSpeed(8, 14);
         this.direction = calculateDirection(startingLoc, new Point(target.centerX(), target.centerY()));
         this.color = Color.GREEN;
 
@@ -33,6 +33,11 @@ public class Projectile_Direct extends Projectile {
 
 //        Animation anim = new Animation(new Bitmap[]{effect}, 2);
 
+    }
+
+    private double generateRandomSpeed (double min, double max) {
+        double range = max - min + 1;
+        return Math.random() * range + min;
     }
 
     private Point generateStartingLocation() {
